@@ -17,7 +17,11 @@ class MainViewModel {
     }
     
     func fetchItems() {
-        
-        // TODO
+        service.fetchData { item in
+            guard let item = item else {
+                return
+            }
+            self.delegate?.didFetchItems(items: item)
+        }
     }
 }
